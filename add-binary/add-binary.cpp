@@ -22,6 +22,9 @@ void addBit(char a, char b, int prevp, int *sum, int *p) {
 }
 
 string addBinary(string a, string b) {
+    if (a == "0" && b == "0") {
+        return "0";
+    }
     int alen = a.size();
     int blen = b.size();
     int sumlen = alen + 1;
