@@ -22,17 +22,21 @@ ListNode * deleteDuplicates(ListNode *head) {
 		if (head->val != head->next->val) {
 			if (head_dup_flag) {
 				head = head->next;
+				head_dup_flag = false;
 			} else {
 				break;	
 			}
 			
 		} else {
 			head_dup_flag = true;
+			head = head->next;
 		}
-		head = head->next;
 	}
-	if (head == NULL) {
+	if (head->next == NULL && head_dup_flag) {
 		return NULL;
+	}
+	if (head == NULL || head->next == NULL) {
+		return head ;
 	}
 
 	ListNode * p1 = head;
@@ -90,6 +94,7 @@ int main() {
 	printList(&node1);
 	ListNode *ret = deleteDuplicates(&node1);
 	printList(ret);
+	cout<<endl;
 
 	node1.val = 1;	node1.next = &node2;
 	node2.val = 2;	node2.next = &node3;
@@ -101,13 +106,15 @@ int main() {
 	printList(&node1);
 	ret = deleteDuplicates(&node1);
 	printList(ret);
+	cout<<endl;
 
 	node1.val = 1;	node1.next = &node2;
-	node2.val = 2;	node2.next = &node3;
+	node2.val = 1;	node2.next = &node3;
 	node3.val = 2;	node3.next = NULL;
 	printList(&node1);
 	ret = deleteDuplicates(&node1);
-	printList(ret);	
+	printList(ret);
+	cout<<endl;	
 
 	node1.val = 1;	node1.next = &node2;
 	node2.val = 1;	node2.next = NULL;
@@ -115,6 +122,7 @@ int main() {
 	ret = deleteDuplicates(&node1);
 	//cout<<":" <<(int)(NULL == ret)<<endl;
 	printList(ret);	
+	cout<<endl;
 
 	node1.val = 1;	node1.next = &node2;
 	node2.val = 1;	node2.next = &node3;
@@ -123,4 +131,5 @@ int main() {
 	printList(&node1);
 	ret = deleteDuplicates(&node1);
 	printList(ret);	
+	cout<<endl;
 }
