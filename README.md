@@ -1,6 +1,6 @@
 # LeetCode Practice
 
-Here are my codes of the [LeetCod](https://oj.leetcode.com/problems/).
+Here are my codes of the [LeetCode](https://oj.leetcode.com/problems/).
 
 Fight for jobs.
 
