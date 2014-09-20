@@ -8,10 +8,8 @@
  */
  
 #include <algorithm> 
-
-class Solution {
-public:
-    bool ListNodeCompare(ListNode *l1, ListNode *l2) {
+struct ListNodeSizeCompare {
+    bool operator () ( ListNode *l1,  ListNode *l2) {
         if (l1 == NULL && l2 == NULL) {
             return true;
         }
@@ -21,28 +19,30 @@ public:
         if (l2 == NULL) {
             return false;
         }
-        return l1->val < l2->val;
+        int len1 = 0;
+        int len2 = 0;
+        ListNode *p = l1;
+        while (p != NULL) {
+            ++len1;
+            p = p ->next;
+        }
+        p = l2;
+        while (p != NULL) {
+            ++len2;
+            p = p ->next;
+        }
+        return len1 < len2;
     }
-    
+};
+
+class Solution {
+public:
     ListNode *mergeKLists(vector<ListNode *> &lists) {
         int n = lists.size();
-        /*
-        ListNode *head = NULL;
-        int i = 0;
-        int start_idx = 0;
-        for (i = 0; i < n; ++i) {
-            if (lists[i] != NULL) {
-                head = lists[i];
-                start_idx = i;
-                break;
-            }
-        }
-        if (i == n) {
+        if (0 == n) {
             return NULL;
         }
-        */
-        std::sort(lists.begin(), lists.end(), ListNodeCompare);
-        queue<ListNode *> waiting;
+        priority_queue<ListNode *, vector<ListNode *>, ListNodeSizeCompare> waiting;
         for (int i = 0; i < n; ++i) {
             waiting.push(lists[i]);
         }
