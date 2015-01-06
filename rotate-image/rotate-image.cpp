@@ -12,12 +12,13 @@ void rotate(vector<vector<int> > &matrix) {
         int last = n - 1 - layer;
         for (int i = first; i < last; ++i) {
             int top = matrix[first][i];
+            int offset = i - first;
             // right -> top
-            matrix[first][i] = matrix[last - i][first];
+            matrix[first][i] = matrix[last - offset][first];
             // bottom -> right
-            matrix[last - i][first] = matrix[last][last - i];
+            matrix[last - offset][first] = matrix[last][last - offset];
             // left -> bottom
-            matrix[last][last - i] = matrix[i][last];
+            matrix[last][last - offset] = matrix[i][last];
             // top -> left
             matrix[i][last] = top;
         }
@@ -54,6 +55,21 @@ int main() {
     matrix.push_back(row2);
     matrix.push_back(row3);
     testRotate(matrix);
+    
+    vector<vector<int> > matrix1;
+    int arow11[] = {1,2,3,4};
+    vector<int> row11(arow11, arow11 + 4);
+    int arow12[] = {5,6,7,8};
+    vector<int> row12(arow12, arow12 + 4);
+    int arow13[] = {9,10,11,12};
+    vector<int> row13(arow13, arow13 + 4);
+    int arow14[] = {13,14,15,16};
+    vector<int> row14(arow14, arow14 + 4);
+    matrix1.push_back(row11);
+    matrix1.push_back(row12);
+    matrix1.push_back(row13);
+    matrix1.push_back(row14);
+    testRotate(matrix1);
     return 0;
 }
 
