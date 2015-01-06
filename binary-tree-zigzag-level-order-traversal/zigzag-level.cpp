@@ -17,8 +17,6 @@ vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
     vector<vector<int> > ret;
                            
     if (NULL == root) {
-        vector<int> tmp;
-        ret.push_back(tmp);
         return ret;
     }
                                     
@@ -43,10 +41,13 @@ vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
             next_level_cnt++;
         }
         if (cur_level == cur_level_cnt) {
-            vector<int> next_level_vector;
-            ret.push_back(next_level_vector);
+            if (next_level_vector > 0) {
+                vector<int> next_level_vector;
+                ret.push_back(next_level_vector);
+            }
             cur_level_cnt = next_level_cnt;
             cur_level = 0;
+            next_level_cnt = 0;
         }        
     }
     // Become zigzag
