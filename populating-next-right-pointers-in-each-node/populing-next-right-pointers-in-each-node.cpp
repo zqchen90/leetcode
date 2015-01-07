@@ -1,17 +1,18 @@
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
 struct TreeLinkNode {
     int val;
     TreeLinkNode * left, *right, *next;
-}
+};
 
 void connect(TreeLinkNode *root) {
     queue<TreeLinkNode *> q;
                            
     if (NULL == root) {
-        return ret;
+        return;
     }
                                     
     int cur_level_cnt = 1;
