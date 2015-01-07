@@ -25,7 +25,8 @@ bool isScramble(string s1, string s2) {
                     continue;
                 }
                 for (int l = 1; l < k; ++l) {
-                    if (dp[i][j][l] && dp[i + l][j + l][k - l] || dp[i + l][j][k - l] && dp[i][i + k - l][l]) {
+                    if ((dp[i][j][l] && dp[i + l][j + l][k - l]) 
+                            || (dp[i + l][j][k - l] && dp[i][j + k - l][l])) {
                         dp[i][j][k] = true;
                         break;
                     }
