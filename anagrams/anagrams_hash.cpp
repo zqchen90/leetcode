@@ -6,7 +6,8 @@
 
 using namespace std;
 
-bool has_key(unordered_map<string, int> map, string key) {
+// MUST use refer, or TLE will happen
+bool has_key(const unordered_map<string, int> &map, const string &key) {
     unordered_map<string, int>::const_iterator it = map.find(key);
     if (it == map.end()) {
         return false;
@@ -17,32 +18,26 @@ bool has_key(unordered_map<string, int> map, string key) {
 
 vector<string> anagrams(vector<string> &strs) {
     vector<string> ret;
-    vector<string> strs_sort;
     unordered_map<string, int> sort_string_index;
     int i = 0;
     int j = 0;
-    // copy
-    for (i = 0; i < strs.size(); ++i) {
-        string tmp (strs[i]);
-        strs_sort.push_back(tmp);
-    }
     // sort
-    for (i = 0; i < strs_sort.size(); ++i) {
-        sort(strs_sort[i].begin(), strs_sort[i].end());
-        if (has_key(sort_string_index, strs_sort[i])) {
-            int index = sort_string_index[strs_sort[i]];
+    for (i = 0; i < strs.size(); ++i) {
+        string s = strs[i];
+        sort(s.begin(), s.end());
+        if (has_key(sort_string_index, s)) {
+            int index = sort_string_index[s];
             if (index >= 0) {
                 ret.push_back(strs[index]);
-                index = -1;
+                sort_string_index[s] = -1;
             }
             ret.push_back(strs[i]);
         } else {
-            sort_string_index[strs_sort[i]] = i;
+            sort_string_index[s] = i;
         }
     }
     return ret;
 }
-
 int main() {
     
 
