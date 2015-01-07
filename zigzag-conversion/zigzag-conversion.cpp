@@ -4,6 +4,12 @@
 using namespace std;
 
 string convert(string s, int nRows) {
+    if (s.size() <= nRows) {
+        return s;
+    }
+    if (1 == nRows) {
+        return s;
+    }
     string ret = "";
     int first = 0;
     int second = 0;
