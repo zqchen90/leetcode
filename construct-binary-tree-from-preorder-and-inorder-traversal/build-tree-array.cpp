@@ -11,34 +11,45 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-    if (0 == preorder.size() && 0 == inorder.size()) {
+TreeNode *buildTreeArray(int *preorder, int preorder_len, int *inorder, int inorder_len) {
+    if (0 == preorder_len && 0 == inorder_len) {
         return NULL;
     }
-    if (1 == preorder.size() && 1 == preorder.size()) {
+    if (1 == preorder_len && 1 == preorder_len) {
         TreeNode *root = new TreeNode(preorder[0]);
         return root;
     }
     int root_val = preorder[0];
-    vector<int>::iterator it = find(inorder.begin(), inorder.end(), root_val);
-    int root_inorder_pos = it - inorder.begin();
+    int root_inorder_pos = 0;
+    for (int i = 0; i < inorder_len; ++i) {
+        if (inorder[i] == root_val) {
+            root_inorder_pos = i;
+        }
+    }
+
     int left_size = root_inorder_pos;
-    int right_size = inorder.size() - root_inorder_pos - 1;
+    int right_size = inorder_len - root_inorder_pos - 1;
 
     TreeNode *root = new TreeNode(root_val);
-    
-    vector<int> preorder_left (preorder.begin() + 1, preorder.begin() + 1 + root_inorder_pos);
-    vector<int> inorder_left(inorder.begin(), inorder.begin() + root_inorder_pos);
-    TreeNode *left = buildTree(preorder_left, inorder_left);
-
-    vector<int> preorder_right (preorder.begin() + left_size + 1, preorder.end());
-    vector<int> inorder_right(inorder.begin() + left_size + 1, inorder.end());
-    TreeNode *right = buildTree(preorder_right, inorder_right);
+    TreeNode *left = buildTreeArray(&preorder[1], left_size, inorder, left_size);
+    TreeNode *right = buildTreeArray(&preorder[left_size + 1], right_size, &inorder[left_size + 1], right_size);
     
     root->left = left;
     root->right = right;
     return root;
 }
+
+TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+    int n = preorder.size();
+    int *preorder_array = new int[n];
+    int *inorder_array = new int[n];
+    for (int i = 0; i < n; ++i) {
+        preorder_array[i] = preorder[i];
+        inorder_array[i] = inorder[i];
+    }
+    return buildTreeArray(preorder_array, n, inorder_array, n);
+}
+
 
 void printTree(TreeNode *root) {
     if (NULL == root) {
