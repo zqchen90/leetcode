@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include "string.h"
 
 using namespace std;
 
@@ -8,30 +10,21 @@ int strStr(char *haystack, char *needle) {
 
 int strStrBruteForce(char *haystack, char *needle) {
     int pos = 0;
-    char *phay = haystack;
-    char *pneedle = needle;
-    while (haystack[pos] != '\0') {
-        if (haystack[pos] == *pneedle) {
-            char *phay = &haystack[pos];
-            while (*phay == *pneedle && *phay != '\0' && *pneedle != '\0') {
-                phay++;
-                pneedle++;
-            }
-            if (*pneedle == '\0') {
-                return pos;
-            }
-            pneedle = needle;
+    int hlen = strlen(haystack);
+    int nlen = strlen(needle);
+    for (pos = 0; pos <= hlen - nlen; ++pos) {
+        int p = 0;
+        while (p < nlen && haystack[pos + p] == needle[p]) {
+            p++;
         }
-        pos++;
+        if (p == nlen) {
+            return pos;
+        }
     }
     return -1;
 }
 
-void testStrStr(string haystack, string needle, int pos) {
-    string input1 (haystack);
-    input1.append(1, '\0');
-    string input2 (needle);
-    input2.append(1, '\0');
+void testStrStr(string input1, string input2, int pos) {
     int output = strStrBruteForce(const_cast<char *>(input1.c_str()), const_cast<char *>(input2.c_str()));
     if (output == pos) {
         cout<<"Pass"<<endl;
