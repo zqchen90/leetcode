@@ -59,6 +59,10 @@ int strStr(char *haystack, char *needle) {
     int j = 0;
     int hlen = strlen(haystack);
     int nlen = strlen(needle);
+    // Always return 0, when needle is empty
+    if (0 == nlen) {
+        return 0;
+    }
     vector<int> next;
     get_next(needle, next);
     while (i < hlen) {
@@ -167,6 +171,7 @@ void testStrStr(string input1, string input2, int pos) {
 int main() {
     testStrStr("abcdft", "cdf", 2);    
     testStrStr("abcdft", "ecdf", -1);    
+    testStrStr("abcdft", "", 0);    
     
     int next1[] = {0,0,1,0,1,2};
     testNext("abacab", vector<int> (next1, next1 + 6));
