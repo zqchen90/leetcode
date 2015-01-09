@@ -25,7 +25,7 @@ vector<vector<string> > partition(string s, int start) {
             if (i + 1 < n) {
                 vector<vector<string> > result2 = partition(s, i + 1);
                 for (int k = 0; k < result2.size(); ++k) {
-                    ret.push_back(vector<string> (result2.size() + 1, ""));
+                    ret.push_back(vector<string> (result2[k].size() + 1, ""));
                     ret.back()[0] = s.substr(start, i - start + 1);
                     copy(result2[k].begin(), result2[k].end(), ret.back().begin() + 1);
                 }
