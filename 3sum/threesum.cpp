@@ -14,17 +14,6 @@ void print(vector<vector<int> > &ret) {
     }
 }
 
-void add_result(vector<vector<int> > &ret, vector<int> &add) {
-    for (int i = 0; i < ret.size(); ++i) {
-        if (ret[i][0] == add[0] &&
-            ret[i][1] == add[1] &&
-            ret[i][2] == add[2]) {
-            return;
-        }
-    }
-    ret.push_back(add);
-}
-
 vector<vector<int> > threeSum(vector<int> &num) {
     vector<vector<int> > ret;
     int n = num.size();
@@ -32,7 +21,10 @@ vector<vector<int> > threeSum(vector<int> &num) {
     sort(num.begin(), num.end());
     int l, m, r;
 
-    for (l = 0; l < n - 2; ++l) {
+    for (l = 0; l < n - 2 && num[l] <= 0; ++l) {
+        if (l >= 1 && num[l] == num[l-1]) {
+            continue;
+        }
         m = l + 1;
         r = n - 1;
         while (m < r) {
@@ -42,12 +34,21 @@ vector<vector<int> > threeSum(vector<int> &num) {
                 tmp.push_back(num[l]);
                 tmp.push_back(num[m]);
                 tmp.push_back(num[r]);
-                add_result(ret, tmp); 
+                ret.push_back(tmp);
                 r--;
+                while (num[r] == num[r+1]) {
+                    r--;
+                }
             } else if (sum > target) {
                 r--;
+                while (num[r] == num[r+1]) {
+                    r--;
+                }
             } else {
                 m++;
+                while (num[m] == num[m-1]) {
+                    m++;
+                }
             }
         }
     }
