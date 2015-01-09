@@ -3,6 +3,9 @@
 using namespace std;
 
 int removeDuplicates(int A[], int n) {
+    if (n <= 1) {
+        return n;
+    }
     int ret = 0;
     int runner = 1;
     while (runner < n) {
