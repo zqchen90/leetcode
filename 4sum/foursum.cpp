@@ -20,7 +20,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target) {
     sort(num.begin(), num.end());
     int l, ml, mr, r;
 
-    for (l = 0; l < n - 3 && num[l] <= target; ++l) {
+    for (l = 0; l < n - 3; ++l) {
         if (l >= 1 && num[l] == num[l-1]) {
             continue;
         }
@@ -66,6 +66,12 @@ int main() {
     vector<vector<int> > ret = fourSum(numv, 0);
     print(ret);
 
+    cout<<endl;
+
+    int num2[] = {1,-2,-5,-4,-3,3,3,5};
+    vector<int> numv2 (num2, num2 + sizeof(num2)/sizeof(int));
+    vector<vector<int> > ret2 = fourSum(numv2, -11);
+    print(ret2);
     return 0;
 }
 
