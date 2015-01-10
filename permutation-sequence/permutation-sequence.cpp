@@ -32,15 +32,23 @@ void getPermutation(int n, int k, vector<bool> &digit_used, vector<char> &digit,
     return;
 }
 
+
 string getPermutation(int n, int k) {
     vector<bool> digit_used (n, false);
     vector<char> digit (n, '1');
+    vector<int> factor (n + 1, 1);
     for (int i = 1; i <= n - 1; ++i) {
         digit[i] = digit[i - 1] + 1;
     }
+    for (int i = 1; i <= n; ++i) {
+        factor[i] = factor[i - 1] * i;
+    }
+    int first_digit = (k - 1) / factor[n-1];
     string ret = "";
     vector<char> path;
-    int curk = 0;
+    int curk = factor[n-1] * first_digit;
+    digit_used[first_digit] = true;
+    path.push_back(digit[first_digit]);
     getPermutation(n, k, digit_used, digit, path, &curk, ret);
     return ret;
 }
