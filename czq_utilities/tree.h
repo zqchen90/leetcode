@@ -36,7 +36,7 @@ TreeNode * serialized_binary_tree(std::string levelOrderTraversal) {
         string e = elems[i];
         if (e != SERIALIZE_EMPTY) {
             TreeNode *p = new TreeNode(atoi(e.c_str()));
-            std::cout<<"New node ["<<e<<"]"<<std::endl;
+            //std::cout<<"New node ["<<e<<"]"<<std::endl;
             if (left_flag) {
                 cur->left = p;
                 left_flag = false;
@@ -59,6 +59,20 @@ TreeNode * serialized_binary_tree(std::string levelOrderTraversal) {
         i++;
     }
     return root;
+}
+
+bool tree_equal(TreeNode *root1, TreeNode *root2) {
+    if (NULL == root1 && NULL == root2) {
+        return true;
+    }
+    if (NULL == root1 || NULL == root2) {
+        return false;
+    }
+    if (root1->val != root2->val) {
+        return false;
+    }
+    return (tree_equal(root1->left, root2->left) &&
+            tree_equal(root1->right, root2->right));
 }
 
 void print_tree(TreeNode *root) {

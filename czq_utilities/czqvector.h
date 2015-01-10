@@ -1,7 +1,33 @@
-#ifndef PRINT_VECTOR_H
-#define PRINT_VECTOR_H
+#ifndef CZQVECTOR_H
+#define CZQVECTOR_H
 
 #include <vector>
+#include "czqstring.h"
+#include "stdlib.h"
+
+std::vector<int> build_int_vector(std::string s, const char delim) {
+    using std::vector;
+    using std::string;
+    vector<string> elems = split(s, delim);
+    vector<int> ret;
+    for (int i = 0; i < elems.size(); ++i) {
+        ret.push_back(atoi(elems[i].c_str()));
+    }
+    return ret;
+}
+
+template<typename T> bool vector_equal(std::vector<T> input1, std::vector<T> input2) {
+    if (input1.size() != input2.size()) {
+        return false;
+    }
+    for (int i = 0; i < input1.size(); ++i) {
+        if (input1[i] != input2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 template <typename T> void print_vector(const std::vector<T> data) {
     std::cout<<"[";

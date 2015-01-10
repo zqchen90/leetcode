@@ -6,9 +6,15 @@ using namespace std;
 
 int main() {
     TreeNode *root = serialized_binary_tree( "1,2,3,#,#,4,#,#,5");
-    cout<<"build tree done."<<endl;
-    if (NULL == root) cout<<"root is null"<<endl;
+    cout<<"Tree 1"<<endl;
     print_tree(root);
+    
+    TreeNode *root2 = serialized_binary_tree( "1,2,3,#,#,4,#,#,5");
+    cout<<"Tree 2"<<endl;
+    print_tree(root2);
+    
+    cout<<"Two trees equal? "<<tree_equal(root, root2)<<endl;
+
     return 0;
 }
 
