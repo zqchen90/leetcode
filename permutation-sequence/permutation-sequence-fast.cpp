@@ -25,7 +25,7 @@ void getPermutation(int n, int k, vector<bool> &digit_used, vector<char> &digit,
             }
         }
     }
-    getPermutation(n-1, k, digit_used, digit, path, factor,ret);
+    getPermutation(n-1, k, digit_used, digit, path, factor, ret);
     return;
 }
 
@@ -33,7 +33,7 @@ void getPermutation(int n, int k, vector<bool> &digit_used, vector<char> &digit,
 string getPermutation(int n, int k) {
     vector<bool> digit_used (n, false);
     vector<char> digit (n, '1');
-    vector<int> factor (n + 1, 1);
+    vector<int> factor (n + 1, 1); // n!
     for (int i = 1; i <= n - 1; ++i) {
         digit[i] = digit[i - 1] + 1;
     }
