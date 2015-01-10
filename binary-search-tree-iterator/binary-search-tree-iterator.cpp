@@ -9,7 +9,7 @@ class BSTIterator {
         BSTIterator (TreeNode *root) {
             if (NULL != root) {
                 TreeNode *p = root;
-                while (NULL != root) {
+                while (NULL != p) {
                     s.push(p);
                     p = p->left;
                 }
