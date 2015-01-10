@@ -69,15 +69,15 @@ void print_tree(TreeNode *root) {
     }
     cout<<"[";
     cout<<root->val;
-    cout<<", l: ";
+    cout<<" L( ";
     if (NULL != root->left) {
         cout<<root->left->val;
     }
-    cout<<", r: ";
+    cout<<" ) R( ";
     if (NULL != root->right) {
         cout<<root->right->val;
     }
-    cout<<"]"<<endl;
+    cout<<" )]"<<endl;
     print_tree(root->left);
     print_tree(root->right);
 }
