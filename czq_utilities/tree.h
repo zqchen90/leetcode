@@ -11,7 +11,7 @@
 const char SERIALIZE_DELIM = ',';
 const std::string SERIALIZE_EMPTY = "#";
 
-void serialized_binary_tree(TreeNode *root, std::string levelOrderTraversal) {
+TreeNode * serialized_binary_tree(std::string levelOrderTraversal) {
     using std::vector;
     using std::queue;
     using std::string;
@@ -20,11 +20,11 @@ void serialized_binary_tree(TreeNode *root, std::string levelOrderTraversal) {
     queue<TreeNode *> q;
 
     if (0 == elems.size() || (0 < elems.size() && elems[0] == SERIALIZE_EMPTY)) {
-        root = NULL;
-        return;
+        return NULL;
     }
     
-    root = new TreeNode(atoi(elems[0].c_str()));
+    TreeNode *root = new TreeNode(atoi(elems[0].c_str()));
+    std::cout<<"New node ["<<elems[0]<<"]"<<std::endl;
     q.push(root);
     int level_cnt = 1;
     int level_max_node = 1;
@@ -36,6 +36,7 @@ void serialized_binary_tree(TreeNode *root, std::string levelOrderTraversal) {
         string e = elems[i];
         if (e != SERIALIZE_EMPTY) {
             TreeNode *p = new TreeNode(atoi(e.c_str()));
+            std::cout<<"New node ["<<e<<"]"<<std::endl;
             if (left_flag) {
                 cur->left = p;
                 left_flag = false;
@@ -57,6 +58,7 @@ void serialized_binary_tree(TreeNode *root, std::string levelOrderTraversal) {
         }
         i++;
     }
+    return root;
 }
 
 void print_tree(TreeNode *root) {
@@ -67,11 +69,11 @@ void print_tree(TreeNode *root) {
     }
     cout<<"[";
     cout<<root->val;
-    cout<<", ";
+    cout<<", l: ";
     if (NULL != root->left) {
         cout<<root->left->val;
     }
-    cout<<", ";
+    cout<<", r: ";
     if (NULL != root->right) {
         cout<<root->right->val;
     }
