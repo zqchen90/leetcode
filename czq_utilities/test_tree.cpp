@@ -5,11 +5,11 @@
 using namespace std;
 
 int main() {
-    TreeNode *root = serialized_binary_tree( "1,2,3,#,#,4,#,#,5");
+    TreeNode *root = build_binary_tree( "1,2,3,#,#,4,#,#,5");
     cout<<"Tree 1"<<endl;
     print_tree(root);
     
-    TreeNode *root2 = serialized_binary_tree( "1,2,3,#,#,4,#,#,5");
+    TreeNode *root2 = build_binary_tree( "1,2,3,#,#,4,#,#,5");
     cout<<"Tree 2"<<endl;
     print_tree(root2);
     

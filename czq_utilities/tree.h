@@ -11,7 +11,7 @@
 const char SERIALIZE_DELIM = ',';
 const std::string SERIALIZE_EMPTY = "#";
 
-TreeNode * serialized_binary_tree(std::string levelOrderTraversal) {
+TreeNode * build_binary_tree(std::string levelOrderTraversal) {
     using std::vector;
     using std::queue;
     using std::string;
@@ -24,7 +24,7 @@ TreeNode * serialized_binary_tree(std::string levelOrderTraversal) {
     }
     
     TreeNode *root = new TreeNode(atoi(elems[0].c_str()));
-    std::cout<<"New node ["<<elems[0]<<"]"<<std::endl;
+    //std::cout<<"New node ["<<elems[0]<<"]"<<std::endl;
     q.push(root);
     int level_cnt = 1;
     int level_max_node = 1;
