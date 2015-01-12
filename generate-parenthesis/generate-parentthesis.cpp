@@ -12,11 +12,13 @@ void add_parenthesis(int left, int right, string &path, vector<string> &ret) {
     if (0 == left && 0 == right) {
         ret.push_back(path);
     }
+    // Alway append a left parenthesis first
     if (left > 0) {
         path.append(1, '(');
         add_parenthesis(left - 1, right, path, ret);
         path.erase(path.length()-1, 1);
     }
+    // Apeend right parenthsis only if there are more left than right
     if (right > left) {
         path.append(1, ')');
         add_parenthesis(left, right - 1, path, ret);
