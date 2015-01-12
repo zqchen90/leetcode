@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// S[index], get the subsets with S[index+1, ...], and add S[index] in these subsets
+// to get subsets with S[index, ...]
 vector<vector<int> > get_subsets(vector<int> &S, int index) {
     vector<vector<int> > all_sets;
     if (index == S.size()) {
