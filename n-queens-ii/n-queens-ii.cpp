@@ -32,7 +32,7 @@ void solveNQueens(int &ret, vector<int> &col_for_row, int index, int n) {
     }
 }
 
-int solveNQueens(int n) {
+int totalNQueens(int n) {
     vector<int> col_for_row (n, 0);
     int ret = 0;
     solveNQueens(ret, col_for_row, 0, n);
@@ -41,11 +41,11 @@ int solveNQueens(int n) {
 
 int main() {
     cout<<"4 Queens"<<endl;
-    int ret4 = solveNQueens(4);
+    int ret4 = totalNQueens(4);
     cout<<ret4<<endl;
 
     cout<<"8 Queens"<<endl;
-    int ret8 = solveNQueens(8);
+    int ret8 = totalNQueens(8);
     cout<<ret8<<endl;
     return 0;
 }
