@@ -27,20 +27,27 @@ int calculateMinimumHP(vector<vector<int> > &dungeon) {
     }
 
     // fill the bottom line
+    if (width >= 2) {
     for (int c = col - 1; c >= 0; --c) {
         hp[row][c] = hp[row][c + 1] -  dungeon[row][c];
         if (hp[row][c] <= 0) {
             hp[row][c] = 1;
         }
     }
+    }
 
     // fill the right line
+    if (height >= 2) {
     for (int r = row - 1; r >= 0; --r) {
         hp[r][col] = hp[r + 1][col] - dungeon[r][col];
         if (hp[r][col] <= 0) {
             hp[r][col] = 1;
         }
     }
+    }
+
+    cout<<"fill big"<<endl;
+    if (width >=2 && height >= 2) {
     // fill the remaining
     while (row != 0 || col != 0) {
         if (row != 0) {
@@ -62,6 +69,7 @@ int calculateMinimumHP(vector<vector<int> > &dungeon) {
             }
         }
     }
+    }
     return hp[0][0];
 }
 
@@ -79,6 +87,7 @@ void test(string input, char row_delim, char col_delim, int ret) {
 int main() {    
     test("-2,-3,3;-5,-10,1;10,30,-5", ';', ',', 7);
     test("0", ';', ',', 1);
+    test("0,0", ';', ',', 1);
     return 0;
 }
 
