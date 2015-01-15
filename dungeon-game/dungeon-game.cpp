@@ -48,7 +48,7 @@ int calculateMinimumHP(vector<vector<int> > &dungeon) {
 
     cout<<"fill big"<<endl;
     if (width >=2 && height >= 2) {
-    // fill the remaining
+    // fill the remaining, no need if width < 2 || height < 2
     while (row != 0 || col != 0) {
         if (row != 0) {
             row--;
@@ -68,7 +68,6 @@ int calculateMinimumHP(vector<vector<int> > &dungeon) {
                 hp[r][col] = 1;
             }
         }
-    }
     }
     return hp[0][0];
 }
