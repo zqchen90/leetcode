@@ -10,6 +10,7 @@ using namespace std;
 // return true if num1 > num2
 // sort in descent order
 bool my_compare(string num1, string num2) {
+    /*
     if (num1.length() == num2.length()) {
         return num1 > num2;
     }
@@ -25,10 +26,14 @@ bool my_compare(string num1, string num2) {
         }
     }
     if (num1_shorter) {
-        return num1[min_len - 1] > num2[min_len];
+        return num1[0] > num2[min_len];
     } else {
-        return num2[min_len - 1] < num1[min_len];
+        return num2[0] < num1[min_len];
     }
+    */
+    string num1num2 = num1 + num2;
+    string num2num1 = num2 + num1;
+    return num1num2 > num2num1;
 }
 
 string int2string(int num) {
@@ -60,13 +65,15 @@ void testLargestNumber(string inputstr, string ret) {
     if (output == ret) {
         cout<<"Pass"<<endl;
     } else {
-        cout<<"Fail "<<output<<ret<<endl;
+        cout<<"Fail "<<output<<" " <<ret<<endl;
     }
 }
 
 int main() {
     testLargestNumber("3,30,34,5,9", "9534330");
     testLargestNumber("0,0", "0");
+    testLargestNumber("824,938,1399,5607,6973,5703,9609,4398,8247", "9609938824824769735703560743981399");
+    testLargestNumber("121,12", "12121");
     return 0;
 }
 
