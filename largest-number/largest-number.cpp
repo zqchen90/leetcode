@@ -45,16 +45,28 @@ string largestNumber(vector<int> &num) {
     // print_vector(num2str);
     sort(num2str.begin(), num2str.end(), my_compare);
     string ret ("");
+    if (num2str[0] == "0") {
+        return "0";
+    }
     for (int i = 0; i < num2str.size(); ++i) {
         ret.append(num2str[i]);
     }
     return ret;
 }
 
-int main() {
-    vector<int> input = build_int_vector("3,30,34,5,9", ',');
+void testLargestNumber(string inputstr, string ret) {
+    vector<int> input = build_int_vector(inputstr, ',');
     string output = largestNumber(input);
-    cout<<output<<endl;
+    if (output == ret) {
+        cout<<"Pass"<<endl;
+    } else {
+        cout<<"Fail "<<output<<ret<<endl;
+    }
+}
+
+int main() {
+    testLargestNumber("3,30,34,5,9", "9534330");
+    testLargestNumber("0,0", "0");
     return 0;
 }
 
