@@ -10,27 +10,6 @@ using namespace std;
 // return true if num1 > num2
 // sort in descent order
 bool my_compare(string num1, string num2) {
-    /*
-    if (num1.length() == num2.length()) {
-        return num1 > num2;
-    }
-    int min_len = num1.length();
-    bool num1_shorter = true;
-    if (num2.length() < num1.length()) {
-        min_len = num2.length();
-        num1_shorter = false;
-    }
-    for (int i = 0; i < min_len; ++i) {
-        if (num1[i] != num2[i]) {
-            return num1[i] > num2[i];
-        }
-    }
-    if (num1_shorter) {
-        return num1[0] > num2[min_len];
-    } else {
-        return num2[0] < num1[min_len];
-    }
-    */
     string num1num2 = num1 + num2;
     string num2num1 = num2 + num1;
     return num1num2 > num2num1;
