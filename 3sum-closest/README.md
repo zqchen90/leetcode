@@ -11,7 +11,7 @@ Given an array S of n integers, find three integers in S such that the sum is cl
 ## Solution
 Just the same as 3Sum
   1. Sort the array first.
-  1. Use three pointers, left, middle, and right. Traversal left from 0 to n - 3.
+  1. Use three pointers, left, middle, and right. Traverse left from 0 to n - 3.
   1. For each left, initialize middle = left + 1 and right = n - =
   1. Move "middle" right and move "right" left until they meet.
   1. When moving "middle" and "right", if they equal previous ones, they should be ignored directly.
