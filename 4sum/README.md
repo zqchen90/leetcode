@@ -19,7 +19,7 @@ Note:
 Similar with 3Sum
   1. Sort the array first.
   1. Instead of three, we need four pointers, left, middle_left, middle_right and right. 
-  2. Traverse left from 0 to n - 4 and middle_left from left + 1 to n - 3.
+  2. Traversal left from 0 to n - 4 and middle_left from left + 1 to n - 3.
   1. For each pair of left and middle_left, initialize middle_right = middle_left + 1 and right = n - =
   1. Move "middle_right" right and move "right" left until they meet.
   1. Try to ignore equal elements when move four pointers.
