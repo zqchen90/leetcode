@@ -19,9 +19,10 @@ private:
 };
 
 template <class T> RangeMinimumQuery<T>::RangeMinimumQuery(
-    std::vector<T> &Data) : st(SegmentTree<T>(Data.size())), data(std::vector<T>(Data)) {
-    using std::cout;
-    cout<<"Query construct, data: "<<data.size()<<endl;
+    std::vector<T> &Data) : st(SegmentTree<T>(Data.size())), data(std::vector<T>(Data.begin(), Data.end())) {
+    // using std::cout;
+    // using std::endl;
+    // cout<<"Query construct, data: "<<data.size()<<endl;
 }
 
 template <class T> void RangeMinimumQuery<T>::initialize() {
