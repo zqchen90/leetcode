@@ -3,40 +3,36 @@
 
 #include <vector>
 
-template <typename T>
-class SegmentTree {
+template <class T> class SegmentTree {
 public:
-    template <typename T>
-    SegmentTree(int data_size) {
+    template <class T> SegmentTree(int data_size) {
         height = (int)(ceil(log2(data_size)));
         size = 2 * (int)pow(2, height) - 1;
         st = new int[size];
     }
 
-    template <typename T>
-    ~SegmentTree() {
+    template <class T> ~SegmentTree() {
         delete[] st;
         st = NULL;
     }
 
-    template <typename T>
-    void build_tree(std::vector<T> &data) {
+    template <class T> void build_tree(std::vector<T> &data) {
         build_tree_til(data, 0, data.size() - 1, 0);
     }
 
-    template <typename T> 
+    template <class T> 
     void build_tree(T* data, int data_size) {
         std::vector<T> data_vector (data, data + data_size);
         build_tree_til(data_vector, 0, data_size - 1, 0);
     }
 
-    template <typename T> 
+    template <class T> 
     T get_index(int index) {
         return st[index];
     }
                                   
 private:
-    template <typename T> 
+    template <class T> 
     int build_tree_til(std::vector<T> &data, int start, int end, int index) {
         if (start == end) {
             st[index] = start;
