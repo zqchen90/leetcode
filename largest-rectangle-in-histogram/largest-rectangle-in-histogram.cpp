@@ -59,6 +59,7 @@ int largestRectangleArea(vector<int> &height) {
     if (0 == height.size()) {
         return 0;
     }
+    // Segment tree save the index of the minimum val in range
     SegmentTree st (height.size());
     st.build_tree(height);
     // cout<<"build segment tree"<<endl;
