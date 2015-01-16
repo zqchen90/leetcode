@@ -19,30 +19,32 @@ private:
 };
 
 template <class T> RangeMinimumQuery<T>::RangeMinimumQuery(
-    std::vector<T> &Data) : st(SegmentTree(Data.size())), data(vector(Data)) {
+    std::vector<T> &Data) : st(SegmentTree<T>(Data.size())), data(std::vector<T>(Data)) {
+    using std::cout;
+    cout<<"Query construct, data: "<<data.size()<<endl;
 }
 
-template <class T> RangeMinimumQuery<T>:: void initialize() {
+template <class T> void RangeMinimumQuery<T>::initialize() {
     st.build_tree(data);
 }
 
-template <class T> RangeMinimumQuery<T>::int get_range_minimum_index(int left, int right) {
+template <class T> int RangeMinimumQuery<T>::get_range_minimum_index(int left, int right) {
     if (left < 0 || right > data.size() || left > right) {
         return -1;
     }
     if (left == right) {
         return left;
     }
-    return find_range_minimum_index(array, st, 0, size - 1, qstart, qend, 0);
+    return find_range_minimum_index(0, data.size() - 1, left, right, 0);
 }
 
-template <class T> RangeMinimumQuery<T>::int minValIndex(int i, int j) {
+template <class T> int RangeMinimumQuery<T>::minValIndex(int i, int j) {
     if (i == -1) return j;
     if (j == -1) return i;
     return (data[i] < data[j]) ? i : j;
 }
 
-template <class T> RangeMinimumQuery<T>::int find_range_minimum_index(
+template <class T> int RangeMinimumQuery<T>::find_range_minimum_index(
                                                 int start,
                                                 int end, 
                                                 int qstart, 

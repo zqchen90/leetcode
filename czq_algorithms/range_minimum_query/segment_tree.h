@@ -2,6 +2,7 @@
 #define SEGMENT_TREE_H
 
 #include <vector>
+#include "math.h"
 
 template <class T>
 class SegmentTree {
@@ -31,20 +32,20 @@ template <class T> SegmentTree<T>::~SegmentTree() {
     st = NULL;
 }
 
-template <class T> SegmentTree<T>::void build_tree(std::vector<T> &data) {
+template <class T> void SegmentTree<T>::build_tree(std::vector<T> &data) {
     build_tree_til(data, 0, data.size() - 1, 0);
 }
 
-template <class T> SegmentTree<T>::void build_tree(T* data, int data_size) {
+template <class T> void SegmentTree<T>::build_tree(T* data, int data_size) {
     std::vector<T> data_vector (data, data + data_size);
     build_tree_til(data_vector, 0, data_size - 1, 0);
 }
 
-template <class T> SegmentTree<T>::int get_index(int index) {
+template <class T> int SegmentTree<T>::get_index(int index) {
     return st[index];
 }
 
-template <class T> SegmentTree<T>::int build_tree_til(std::vector<T> &data, int start, int end, int index) {
+template <class T> int SegmentTree<T>::build_tree_til(std::vector<T> &data, int start, int end, int index) {
     if (start == end) {
         st[index] = start;
         return start;

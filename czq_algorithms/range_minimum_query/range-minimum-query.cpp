@@ -18,7 +18,8 @@ void test(int inputarray[], int left, int right, int result) {
 }
 
 int main() {
-    test({2,1,5,6,2,3}, 0, 5, 1);
+    int input1[] = {2,1,5,6,2,3};
+    test(input1, 0, 5, 1);
     return 0;
 }
 
