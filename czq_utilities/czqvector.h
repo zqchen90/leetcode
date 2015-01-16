@@ -16,6 +16,22 @@ std::vector<int> build_int_vector(std::string s, const char delim) {
     return ret;
 }
 
+std::vector<std::vector<int> > build_int_2d_vector(std::string s, const char row_delim, const char col_delim) {
+    using std::vector;
+    using std::string;
+    vector<string> elems = split(s, row_delim);
+    vector<vector<int> > ret;
+    for (int i = 0; i < elems.size(); ++i) {
+        vector<string> row_elems = split(elems[i], col_delim);
+        vector<int> row_ret;
+        for (int j = 0; j < row_elems.size(); ++j) {
+            row_ret.push_back(atoi(row_elems[j].c_str()));
+        }
+        ret.push_back(row_ret);
+    }
+    return ret;
+}
+
 template<typename T> bool vector_equal(std::vector<T> input1, std::vector<T> input2) {
     if (input1.size() != input2.size()) {
         return false;
