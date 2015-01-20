@@ -31,36 +31,26 @@ void dfs(vector<int> &candidates, int start, int target, vector<int> &path, vect
     if (remain_target == 0) {
         ret.push_back(path);
     } else {
-        /*
-        for (next_start = start  + 1; next_start < candidates.size(); ++next_start) {
-            if (candidates[next_start] != candidates[next_start - 1]) {
-                break;
-            }
-        }
-        if (next_start < candidates.size()) {
-            dfs(candidates, next_start, remain_target, path, ret);
-        }
-        */
         dfs(candidates, start + 1, remain_target, path, ret);
     }
     path.pop_back();
     // cout<<"[LEAVE] start: "<<start<<" target: "<<target<<endl;
 }
 
-vector<vector<int> > combinationSum(vector<int> &candidates, int target) {
-    // Sort candidates in descent order
-    sort(candidates.begin(), candidates.end());
+vector<vector<int> > combinationSum2(vector<int> &num, int target) {
+    // Sort candidates in ascent order
+    sort(num.begin(), num.end());
     
     vector<vector<int> > ret;
     vector<int> path;
     
-    dfs(candidates, 0, target, path, ret);
+    dfs(num, 0, target, path, ret);
     return ret;
 }
 
 void test(string inputstr, int target) {
     vector<int> input = build_int_vector(inputstr, ',');
-    vector<vector<int> > ret = combinationSum(input, target);
+    vector<vector<int> > ret = combinationSum2(input, target);
     print_2d_vector(ret);
     cout<<"--------"<<endl;
 }
