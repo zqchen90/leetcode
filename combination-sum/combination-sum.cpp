@@ -37,7 +37,7 @@ void dfs(vector<int> &candidates, int start, int target, vector<int> &path, vect
 }
 
 vector<vector<int> > combinationSum(vector<int> &candidates, int target) {
-    // Sort candidates in descent order
+    // Sort candidates in ascent order
     sort(candidates.begin(), candidates.end());
     
     vector<vector<int> > ret;
