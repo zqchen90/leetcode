@@ -15,24 +15,35 @@ void dfs(vector<int> &candidates, int start, int target, vector<int> &path, vect
     }
     int remain_target = target;
     int count = 0;
-    dfs(candidates, start + 1, target, path, ret);  // Use 0 current candidate
-    while (remain_target >= candidates[start]) {
-        path.push_back(candidates[start]);
-        count += 1;
-        remain_target -= candidates[start];
-        if (remain_target == 0) {
-            ret.push_back(path);
-            // cout<<"Find one: ";
-            // print_vector(path);
-            // cout<<endl;
-        } else {
-            dfs(candidates, start + 1, remain_target, path, ret);
+    // Use 0 current candidate
+    int next_start = start + 1;
+    for (; next_start < candidates.size(); ++next_start) {
+        if (candidates[next_start] != candidates[next_start - 1]) {
+            break;
         }
     }
-    while (count > 0) {
-        path.pop_back();
-        count -= 1;
+    if (next_start < candidates.size()) {
+        dfs(candidates, next_start, target, path, ret);
     }
+    // Use 1 current candidate
+    path.push_back(candidates[start]);
+    remain_target -= candidates[start];
+    if (remain_target == 0) {
+        ret.push_back(path);
+    } else {
+        /*
+        for (next_start = start  + 1; next_start < candidates.size(); ++next_start) {
+            if (candidates[next_start] != candidates[next_start - 1]) {
+                break;
+            }
+        }
+        if (next_start < candidates.size()) {
+            dfs(candidates, next_start, remain_target, path, ret);
+        }
+        */
+        dfs(candidates, start + 1, remain_target, path, ret);
+    }
+    path.pop_back();
     // cout<<"[LEAVE] start: "<<start<<" target: "<<target<<endl;
 }
 
@@ -57,8 +68,8 @@ void test(string inputstr, int target) {
 int main() {
     test("2,3,6,7", 7);
     test("2,3,5", 7);
-    test("7,3,2", 18);
     test("1,2", 3);
+    test("10,1,2,7,6,1,5", 8);
     return 0;
 }
 
