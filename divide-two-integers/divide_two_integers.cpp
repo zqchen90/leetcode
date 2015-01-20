@@ -5,10 +5,12 @@
 
 #include <iostream>
 
+#define INT_MAX 2147483647
+
 using namespace std;
 
 int divide(int dividend, int divisor) {
-           int result = 0;
+    unsigned int result = 0;
     int neg_flag = 1;
     unsigned int undividend = abs(dividend);
     unsigned int undivisor = abs(divisor);
@@ -44,6 +46,12 @@ int divide(int dividend, int divisor) {
             shift = shift<<1;
         }
     }
+
+    // if overflow
+    if (result > INT_MAX) {
+        return INT_MAX;
+    }
+
     return result * neg_flag;
 }
 
