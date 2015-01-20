@@ -7,6 +7,9 @@ using namespace std;
 int numDistinct(string S, string T) {
     int SLen = S.size();
     int TLen = T.size();
+    if (0 == SLen || 0 == TLen) {
+        return 0;
+    }
     vector<vector<int> > dp (SLen, vector<int> (TLen, 0));
     if (S[0] == T[0]) {
         dp[0][0] = 1;
