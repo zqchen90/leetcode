@@ -42,8 +42,8 @@ Example 4: S=rarab T=ra,
 
 Define dp[i][j] as how many times T[0, ... j] can be found in S[0, ..., i] as sequences. So j <= i.
 
-> if T[j] != S[i], dp[i][j]  =  dp[i - 1][j]
-if T[j] == S[i], dp[i][j]  =  dp[i - 1][j] + dp[i - 1][j - 1]
+ - if T[j] != S[i], dp[i][j]  =  dp[i - 1][j]
+ - if T[j] == S[i], dp[i][j]  =  dp[i - 1][j] + dp[i - 1][j - 1]
 
 How about the boundaries?
 
@@ -51,8 +51,8 @@ Because j <= i, so j == 0 is the only boundary.
 
 if j == 0, dp[i][0] means how many times we can find T[0] in S[0, ..., i]:
 
-> if T[0] != S[j], dp[i][0]  =  dp[i - 1][0]
-if T[0] == S[j], dp[i][0]  =  dp[i - 1][0] + 1
+ - if T[0] != S[j], dp[i][0]  =  dp[i - 1][0]
+ - if T[0] == S[j], dp[i][0]  =  dp[i - 1][0] + 1
 
 return dp[S.size() - 1][T.size() - 1].
 
