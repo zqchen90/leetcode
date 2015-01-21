@@ -69,3 +69,7 @@ We can use 1D vector dp1d to replace dp[i][j]:
 - The length of dp1d is the length of T
 - For any i, we fill dp1d from j = i to j = 0
 - If S[i] == S[j], dp1d[j] += dp1d[j - 1]
+
+Time: O(m*n)
+
+Space: O(m) , m is the length of T and n is the length of S
