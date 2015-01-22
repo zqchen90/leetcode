@@ -4,7 +4,7 @@
 using namespace std;
 
 int jump(vector<int> A, int n) {
-   if (1 >= n) {
+    if (1 >= n) {
         return 0;
     }
     vector<int> D (n, 0);
@@ -46,9 +46,6 @@ int jump(vector<int> A, int n) {
         } else {
             D[i] = 1 + min;
         }
-        cout<<"i = "<<i<<" A[i] = "<<A[i]<<endl;
-        print_vector(D);
-        cout<<endl;
     }
     return D[0];
 }

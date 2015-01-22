@@ -16,7 +16,13 @@ The minimum number of jumps to reach the last index is 2. (Jump 1 step from inde
 ##Solution
 
 ### DP
-It is simple to solve the problem using DP with a time O(n^2), but this solution will get TLE.
+It is simple to solve the problem using DP:
+
+D[i] is the minimum steps taken from i to the last index.
+
+D[i] = min(D[j]) for each j in (i, i + A[i]]
+
+An AC solution is jump-game-ii_DP_20150122_AC.cpp
 
 ### Greedy
 Another approach is greedy at every jump.
