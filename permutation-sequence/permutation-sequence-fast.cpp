@@ -12,6 +12,8 @@ void getPermutation(int n, int k, vector<bool> &digit_used, vector<char> &digit,
         }
         return;
     }
+    // the first_digit can be calculated directly
+    // if first_digit = x, it means the x-th un-used number from 0 - 9
     int first_digit = (k - 1) / factor[n-1];
     k -= factor[n-1] * first_digit;
     //cout<<"first: "<<first_digit<<" k: "<<k<<endl;
