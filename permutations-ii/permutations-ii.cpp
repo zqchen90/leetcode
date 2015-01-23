@@ -16,7 +16,7 @@ using namespace std;
 void dfs(vector<vector<int> > &ret,
 			vector<int> &path,
 			vector<int> &num,
-			map<int, int> &num_cnt,
+			unordered_map<int, int> &num_cnt,
 			int n) {
 	if (path.size() == n) {
 		ret.push_back(path);
@@ -39,8 +39,8 @@ void dfs(vector<vector<int> > &ret,
 vector<vector<int> > permuteUnique(vector<int> &num) {
 	vector<vector<int> > ret;        
 	vector<int> path;
-	map<int, int> num_cnt;
-	map<int, int>::iterator it;
+	unordered_map<int, int> num_cnt;
+	unordered_map<int, int>::iterator it;
 	vector<int> num_uniq;
 	for (int i = 0; i < num.size(); ++i) {
 		it = num_cnt.find(num[i]);
