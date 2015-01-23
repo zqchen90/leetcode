@@ -2,6 +2,8 @@
 #include <string>
 #include "czqstring.h"
 
+using namespace std;
+
 bool isInterleaveStartEnd(string s1, int start1, int end1,
                           string s2, int start2, int end2,
                           string s3, int start3, int end3) {
@@ -47,7 +49,8 @@ void test(string s1, string s2, string s3, bool result) {
     }
 }
 
-void main() {
+int main() {
     test("aabcc", "dbbca", "aadbbcbcac", true);
     test("aabcc", "dbbca", "aadbbbaccc", false);
+    return 0;
 }
