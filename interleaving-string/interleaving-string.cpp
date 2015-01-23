@@ -25,10 +25,18 @@ bool isInterleaveStartEnd(string s1, int start1, int end1,
     bool isInterleaveS1;
     bool isInterleaveS2;
     if (s1[start1] == s3[start3]) {
-        isInterleaveS1 = isInterleaveStartEnd(s1, start1 + 1, end1, s2, start2, end2, s3, start3 + 1, end3);
+        while (s1[start1] == s3[start3]) {
+            start1++;
+            start3++;
+        }
+        isInterleaveS1 = isInterleaveStartEnd(s1, start1, end1, s2, start2, end2, s3, start3, end3);
     }
     if (s2[start2] == s3[start3]) {
-        isInterleaveS2 = isInterleaveStartEnd(s1, start1, end1, s2, start2 + 1, end2, s3, start3 + 1, end3);
+        while (s2[start2] == s3[start3]) {
+            start2++;
+            start3++;
+        }
+        isInterleaveS2 = isInterleaveStartEnd(s1, start1, end1, s2, start2, end2, s3, start3, end3);
     }
     if (s1[start1] == s3[start3] && s2[start2] == s3[start3]) {
         return isInterleaveS1 || isInterleaveS2;

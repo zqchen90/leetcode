@@ -15,11 +15,18 @@ When s3 = "aadbbbaccc", return false.
 
 ### Recursive
 
-For number i:
+If s1[start1] == s3[start3], find if s3[start3 + 1] if formed by the interleaving of s1[start1 + 1] and s2;
 
-i ^ (i >> 1)
+If s2[start2] == s3[start3], find if s3[start3 + 1] if formed by the interleaving of s2[start2 + 1] and s1;
+
+If s1[start1] == s3[start3] and s2[start2] == s3[start3], find if s3[start3 + 1] if formed by the interleaving of s2[start2 + 1] and s1 OR s1[start1 + 1] and s2.
+
+This solution is interleaving-string.cpp and will get TLE. (updated 2015-1-23)
+
+### DP
 
 
-Time: O(2^n)
 
-Space: O(2^n) 
+Time: O(n)
+
+Space: O(n) 
