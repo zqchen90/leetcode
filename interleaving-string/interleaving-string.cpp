@@ -25,18 +25,22 @@ bool isInterleaveStartEnd(string s1, int start1, int end1,
     bool isInterleaveS1;
     bool isInterleaveS2;
     if (s1[start1] == s3[start3]) {
-        while (s1[start1] == s3[start3]) {
-            start1++;
-            start3++;
+        int newstart1 = start1;
+        int newstart3 = start3;
+        while (s1[newstart1] == s3[newstart3]) {
+            newstart1++;
+            newstart3++;
         }
-        isInterleaveS1 = isInterleaveStartEnd(s1, start1, end1, s2, start2, end2, s3, start3, end3);
+        isInterleaveS1 = isInterleaveStartEnd(s1, newstart1, end1, s2, start2, end2, s3, newstart3, end3);
     }
     if (s2[start2] == s3[start3]) {
-        while (s2[start2] == s3[start3]) {
-            start2++;
-            start3++;
+        int newstart2 = start2;
+        int newstart3 = start3;
+        while (s2[newstart2] == s3[newstart3]) {
+            newstart2++;
+            newstart3++;
         }
-        isInterleaveS2 = isInterleaveStartEnd(s1, start1, end1, s2, start2, end2, s3, start3, end3);
+        isInterleaveS2 = isInterleaveStartEnd(s1, start1, end1, s2, newstart2, end2, s3, newstart3, end3);
     }
     if (s1[start1] == s3[start3] && s2[start2] == s3[start3]) {
         return isInterleaveS1 || isInterleaveS2;
@@ -65,6 +69,7 @@ void test(string s1, string s2, string s3, bool result) {
 }
 
 int main() {
+    test("a", "b", "ab", true);
     test("aabcc", "dbbca", "aadbbcbcac", true);
     test("aabcc", "dbbca", "aadbbbaccc", false);
     return 0;
