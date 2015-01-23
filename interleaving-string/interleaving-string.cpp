@@ -22,15 +22,22 @@ bool isInterleaveStartEnd(string s1, int start1, int end1,
         return s1.substr(start1) == s3.substr(start3);
     }
     // neither s1 nor s2 is empty
+    bool isInterleaveS1;
+    bool isInterleaveS2;
+    if (s1[start1] == s3[start3]) {
+        isInterleaveS1 = isInterleaveStartEnd(s1, start1 + 1, end1, s2, start2, end2, s3, start3 + 1, end3);
+    }
+    if (s2[start2] == s3[start3]) {
+        isInterleaveS2 = isInterleaveStartEnd(s1, start1, end1, s2, start2 + 1, end2, s3, start3 + 1, end3);
+    }
     if (s1[start1] == s3[start3] && s2[start2] == s3[start3]) {
-        return isInterleaveStartEnd(s1, start1 + 1, end1, s2, start2, end2, s3, start3 + 1, end3)
-            || isInterleaveStartEnd(s1, start1, end1, s2, start2 + 1, end2, s3, start3 + 1, end3);
+        return isInterleaveS1 || isInterleaveS2;
     } else {
         if (s1[start1] == s3[start3]) {
-            return isInterleaveStartEnd(s1, start1 + 1, end1, s2, start2, end2, s3, start3 + 1, end3);
+            return isInterleaveS1;
         }
         if (s2[start2] == s3[start3]) {
-            return isInterleaveStartEnd(s1, start1, end1, s2, start2 + 1, end2, s3, start3 + 1, end3);
+            return isInterleaveS2;
         }
     }
     return false;
