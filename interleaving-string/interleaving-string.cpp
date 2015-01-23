@@ -14,6 +14,7 @@ bool isInterleaveStartEnd(string s1, int start1, int end1,
             return true;
         }
     }
+    // cout<<s1.substr(start1)<<"  "<<s2.substr(start2)<<"  "<<s3.substr(start3)<<endl;
     // s1 or s2 is empty
     if (start1 == end1) {
         return s2.substr(start2) == s3.substr(start3);
@@ -25,18 +26,23 @@ bool isInterleaveStartEnd(string s1, int start1, int end1,
     bool isInterleaveS1;
     bool isInterleaveS2;
     if (s1[start1] == s3[start3]) {
-        int newstart1 = start1;
-        int newstart3 = start3;
-        while (s1[newstart1] == s3[newstart3]) {
+        int newstart1 = start1 + 1;
+        int newstart3 = start3 + 1;
+        // skip duplicate element
+        while (s1[newstart1] == s3[newstart3] && s1[newstart1] == s1[newstart1 - 1]) {
             newstart1++;
             newstart3++;
         }
         isInterleaveS1 = isInterleaveStartEnd(s1, newstart1, end1, s2, start2, end2, s3, newstart3, end3);
+        if (isInterleaveS1) { // Can return directly
+            return true;
+        }
     }
     if (s2[start2] == s3[start3]) {
-        int newstart2 = start2;
-        int newstart3 = start3;
-        while (s2[newstart2] == s3[newstart3]) {
+        int newstart2 = start2 + 1;
+        int newstart3 = start3 + 1;
+        // skip duplicate element
+        while (s2[newstart2] == s3[newstart3] && s2[newstart2] == s2[newstart2 - 1]) {
             newstart2++;
             newstart3++;
         }
@@ -72,5 +78,6 @@ int main() {
     test("a", "b", "ab", true);
     test("aabcc", "dbbca", "aadbbcbcac", true);
     test("aabcc", "dbbca", "aadbbbaccc", false);
+    test("aabcc", "dbbca", "aadbcbbcac", true);
     return 0;
 }
