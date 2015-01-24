@@ -8,16 +8,15 @@ int maxSubArray(int A[], int n) {
     if (1 == n)
         return A[0];
 
-    int *sum = new int[n];
-    sum[0] = A[0];
-    int max_sum = sum[0];
+    int sum = A[0];
+    int max_sum = sum;
     for (int i = 1; i < n; ++i) {
-        if (sum[i - 1] > 0) {
-            sum[i] = sum[i - 1] + A[i];
+        if (sum > 0) {
+            sum += A[i];
         } else {
-            sum[i] = A[i];
+            sum = A[i];
         }
-        max_sum = sum[i] > max_sum ? sum[i] : max_sum;
+        max_sum = sum > max_sum ? sum : max_sum;
     }
     return max_sum;
 }
