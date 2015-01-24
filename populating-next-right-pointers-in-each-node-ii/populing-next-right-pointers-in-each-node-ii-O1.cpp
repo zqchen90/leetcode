@@ -10,8 +10,8 @@ struct TreeLinkNode {
 void connect(TreeLinkNode *root) {
     TreeLinkNode *cur = root;
     while (cur != NULL) {
-        TreeLinkNode *prev = NULL;
-        TreeLinkNode *next = NULL;
+        TreeLinkNode *prev = NULL;  // prev in current level
+        TreeLinkNode *next = NULL;  // the first node in the next level
         for (; cur != NULL; cur = cur->next) {
             if (cur->left != NULL) {
                 if (prev != NULL) {
@@ -32,6 +32,7 @@ void connect(TreeLinkNode *root) {
                 }
             }
         }
+        // go to next level
         cur = next;
     }
 }
