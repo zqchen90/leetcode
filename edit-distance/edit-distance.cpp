@@ -27,13 +27,6 @@ int editDistance(string word1, string word2) {
                 min_distance = min(min_distance, dp[index1 - 1][index2 - 1]);
                 dp[index1][index2] = min_distance + 1;
             }
-            /*
-            if (1 == index1 && 1 == index2) {
-                cout<<word1[index1 - 1]<<"  -  "<<word2[index2 - 1]<<endl;
-                print_2d_vector(dp);
-                cout<<"---"<<endl;
-            }
-            */
         }
     }
     return dp[word1.size()][word2.size()];
