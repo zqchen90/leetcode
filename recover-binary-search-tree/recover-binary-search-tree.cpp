@@ -39,7 +39,7 @@ void recoverTree(TreeNode *root) {
     TreeNode *swap2 = NULL;
     
     while (cur != NULL) {
-        print_TreeNode(cur, prev);
+        //print_TreeNode(cur, prev);
         if (cur->left == NULL) {
             detect(prev, cur, &swap1, &swap2);
             prev = cur;
