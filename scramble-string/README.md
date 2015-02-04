@@ -64,6 +64,8 @@ dp[i][j][k] = (dp[i][j][l] && dp[i + l][j + l][k - l] || dp[i][j + k - l][l] && 
 if split at l but don't swap:  dp[i][j][l] && dp[i + l][j + l][k - l]
 if split at l and swap: dp[i][j + k - l][l] && dp[i + l][j][k - l]
 
+Boundaries: dp[i][j][1] = (s1[i] == s2[j])
+
 Time: O(n^4)
 
 Space: O(n^3)
