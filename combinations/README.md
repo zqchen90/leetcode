@@ -25,11 +25,11 @@ vector<int> path;  // a possible selection
 int start;  // select between start and n
 ```
 
-How to select combinations?
+### How to select combinations?
 
-In the first round, we can randomly select one number, say i,  from 1 to n, then we have to select k-1 numbers from i+1 to n.
+In the first round, we can randomly select one number, say i, from 1 to n, then we have to select k-1 numbers from i+1 to n.
 
-So we the recursive funtion:
+So we have the recursive funtion:
 ``` cpp
 dfs(ret, path, start, n, k)
 ```
