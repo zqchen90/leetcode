@@ -12,7 +12,7 @@ Your algorithm should run in O(n) complexity.
 
 # Solution
 
-Traverse every element and check whetherits right and left sides to form a consecutive sequence are in the input. 
+Traverse every element and check whether its right and left sides to form a consecutive sequence are in the input. 
 
 For example, if one element is 4, we should check 3,2,... and 5,6,7... and update the longest length.
 
