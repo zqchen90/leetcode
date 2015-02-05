@@ -20,6 +20,12 @@ void print_buckets(vector<Bucket> &buckets) {
 }
 
 int maximumGap(vector<int> &num) {
+`	if (num.size() < 2) {
+        return 0;
+    }
+    if (num.size() == 2) {
+        return abs(num[0] - num[1]);
+    }
     // Find max and min
     int max_num = num[0];
     int min_num = num[0];
@@ -29,7 +35,7 @@ int maximumGap(vector<int> &num) {
     }
     int range = max_num - min_num;
     int gap_number = num.size() - 1;
-    int bucket_size = (range ) / gap_number + 1;
+    int bucket_size = range / gap_number + 1;
     vector<Bucket> buckets (num.size(), Bucket());
     // Fill number into buckets
     for (int i = 0; i < num.size(); ++i) {
@@ -41,7 +47,7 @@ int maximumGap(vector<int> &num) {
         }
         buckets[bucket_index].max = max(buckets[bucket_index].max, num[i]);
     }
-    print_buckets(buckets);
+    // print_buckets(buckets);
     // Find max gap
     int max_gap = bucket_size;
     int prev_bucket_max = buckets[0].max;
