@@ -40,7 +40,7 @@ Space: O(n)
 
 ### Space O(1) solution
 
-Similar to level-order-traversal, the O(1) solution has to process nodes level by level. Assume we are now at level k:
+Similar to level-order-traversal, the O(1) solution has to process nodes level by level. Assume we are now at level k (level k is already connected and the following steps connect level k+1):
 
 1. For any node at level k, who has both left and children, connect left to right child and remember the right child;
 2. Jump to the next node at level k, and connect the previous right child to the current node's left child;

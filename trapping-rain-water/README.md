@@ -46,6 +46,15 @@ trapping-rain-water.cpp
 
 ### 2
 
+If we sum all water on the top of each bar, we get the trapped water.
+
 1. For each bar, find max_left, the max bar on its left side and max_right, the max bar on its right side;
 2. For each bar, height = min(max_left[i], max_right[i]), the water on the top of this bar is height - A[i] if height is larger than A[i];
 3. Sum water.
+
+Finding max_left and max_right using DP costs O(n), sum water costs O(n)
+
+Time: O(n)
+
+Space: O(n)
+

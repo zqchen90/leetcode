@@ -21,7 +21,7 @@ For example, in array [1, 2, 3, 1], 3 is a peak element and your function should
 
 Time complexities must be log(n) so we should think of binary search.
 
-Please note two very import conditions:
+Please note two very important conditions:
 
 1. num[i] ≠ num[i+1]
 2. num[-1] = num[n] = -∞
